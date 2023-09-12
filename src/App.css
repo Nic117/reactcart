@@ -1,0 +1,47 @@
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background-color: #f0f0f0;
+}
+
+.logo {
+  height: 4em;
+  padding: 1em;
+  transition: transform 300ms;
+}
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.logo.react:hover {
+  filter: none;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin 10s linear infinite;
+  }
+}
+
+.card {
+  padding: 1em;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(237, 233, 233, 0.1);
+  border-radius: 5px;
+}
+
+.read-the-docs {
+  color: #555;
+  font-style: italic;
+}
