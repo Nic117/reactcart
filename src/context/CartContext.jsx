@@ -15,30 +15,23 @@ export const CartContextProvider = ({children}) => {
             /* agrega al carro */
             setCart(prev => [...prev, {...item, qty}]);
 
-            /* -------------------------- actualiza cantidades -------------------------- */
             setTotCartQty(totCartQty += qty);
             setTotAmount(totAmount += qty*item.price);
         }
     }
     const clearCart = () => {
-        /* ----------------------------- vacia el carro ----------------------------- */
+        
         setCart([]);
-
-        /* --------------------------- reinicia cantidades -------------------------- */
         setTotCartQty(totCartQty = 0);
         setTotAmount(totAmount = 0);
     }
     const removeItem = (item) => {
-        /* ----------------------- borra el producto del carro ---------------------- */
         const itemId = item.id;
         setCart(cart.filter(prod => prod.id != itemId));
-
-        /* ------------------------ actualiza las cantidades ------------------------ */
         setTotCartQty(totCartQty -= item.qty);
         setTotAmount(totAmount -= item.qty*item.price);
     }
     const isInCart = (id) => {
-        /* ------------------- verifica si el id está en el carro ------------------- */
         return cart.some(prod => prod.id == id);
     }
     
