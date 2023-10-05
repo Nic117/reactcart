@@ -1,18 +1,18 @@
 import CartWidget from "./CartWidget";
-import { NavLink, useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
 
     return (
         <nav className="nav">
-            <NavLink to='/'><img src="/product_img/tuf4.png" alt="NicSoft" className="nav-logo" /></NavLink>
+            <NavLink to='/logo.png'><img src="/logo.png" alt="" className="nav-logo" /></NavLink>
             <ul className="nav-menu">
-                <NavLink className='nav-link' to='/'>Productos</NavLink>
-                <NavLink className='nav-link' to='/category/laptops'>laptops</NavLink>
-                <NavLink className='nav-link' to='/category/celulares'>Celulares</NavLink>
+                <NavLink className='nav-link' to='/'>Ver todo</NavLink>
+                <NavLink className='nav-link' to='/category/laptops'>Laptops</NavLink>
+                <NavLink className='nav-link' to='/category/telefonos'>Telefonos</NavLink>
+                <NavLink className='nav-link' to='/category/monitor'>Monitores</NavLink>
             </ul>
-            <CartWidget />
+            <NavLink className='nav-link' to='/cart'><CartWidget /></NavLink>
         </nav>
     )
 }

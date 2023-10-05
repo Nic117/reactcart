@@ -1,26 +1,31 @@
 import { useState } from "react";
 
-export const ItemCount = ({stock, initial}) => {
+export const ItemCount = ({stock, initial, onAdd}) => {
 
     const [qty, setQty] = useState(Number(initial));
 
-    const onSubs = () => {
-        if(qty > 0) {
+    const decrement = () => {
+        if(qty > 1) {
             setQty(qty - 1);
         }
     }
 
-    const onAdd = () => {
+    const increment = () => {
         if(qty < stock) {
             setQty(qty +1);
         }
     }
 
     return (
-        <div className="detail-count">
-            <button onClick={onSubs}>-</button>
-            <span>{ qty }</span>
-            <button onClick={onAdd}>+</button>
+        <div>
+            <div className="detail-count">
+                <button className="small-button" onClick={decrement}>-</button>
+                <h4>{ qty }</h4>
+                <button className="small-button" onClick={increment}>+</button>
+            </div>
+            <div className="detail-button">
+                <button className="large-button" onClick={() => onAdd(qty)}>Agregar al Carrito</button>
+            </div>
         </div>
     )
 }

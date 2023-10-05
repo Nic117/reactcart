@@ -1,21 +1,53 @@
-import { Item } from "./Item"
+import { useContext, useState } from "react"
 import { ItemCount } from "./ItemCount"
+import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 export const ItemDetail = ({data}) => {
+
+    const [cartQty, setCartQty] = useState(0);
+
+    const { addItem } = useContext(CartContext);
+
+    const handleOnAdd = (qty) => {
+        setCartQty(qty)
+
+        const item = {
+            id: data.id, 
+            title: data.title, 
+            price: Number(data.price)
+        }
+
+        addItem(item, Number(qty));
+    }
+
     return (
         <div className="detail">
             {
                 data ? (
                         <div className="detail-card">
-                            <img className="detail-card-img" src={data.image} alt="product-image" />
-                            <h3>{data.title}</h3>
-                            <p>{data.description}</p>
-                            <p>$ {data.price}</p>
+                            <img className="detail-card-img" src={data.image} alt="image" />
+                            <br />
+                            <div className="detail-card-desc">
+                                <h3>{data.title}</h3>
+                                <p>{data.description}</p>
+                            </div>
+                            <br />
+                            <h3 className="detail-card-price">$ {data.price}</h3>
+                            <br />
+                            <p className="detail-card-stock">Stock: {data.stock}</p>
                         </div>
                 ) : null
             }
             {
-                data ? <ItemCount stock={data.stock} initial="1" /> : null
+                data ? (
+                    cartQty > 0 ? (
+                            <Link to='/cart'><button className="large-button">Comprar</button></Link>
+                        ) : (
+                            <ItemCount stock={data.stock} initial="1" onAdd={handleOnAdd} />
+                       )
+
+                    ) : null
             }
         </div>
     )

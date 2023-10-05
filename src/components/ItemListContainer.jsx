@@ -1,32 +1,38 @@
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs, query, where, limit } from "firebase/firestore";
 
-const mockAPI = () => {
-    return new Promise ((resolve, reject) => {
-        setTimeout(() => 
-            resolve(fetch('/products.json'))
-        , 2000);
-    })
-}
-  const ItemListContainer = () => {
+const ItemListContainer = () => {
 
     const [data, setData] = useState([]);
-    useEffect(() => {
-        mockAPI()
-        .then(res => res.json())
-        .then((data) => setData(data));
-    }, []);
-	
+    
     const {id: catId} = useParams();
-    const items = catId ? data.filter(item => item.category == catId) : data;
+    useEffect(() => {
+        const db = getFirestore();
+        let items;
+        if(catId) {
+            items = query(collection(db, "products"), where("category", "==", catId));
+        } else {
+            items = query(collection(db, "products"), limit(10));
+        }
+        
+        getDocs(items).then((snapshot) => {
+            if (snapshot.size != 0) {
+                setData(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data() }) ) );
+            } else {
+                setData([]);
+            }
+        })
+        
+    },[catId]);
     
     return (
         <div className="item-container">
-            <ItemList data={items} />
+            <ItemList data={data} />
         </div>
     );
 
 };
 
-  export default ItemListContainer;
+export default ItemListContainer;

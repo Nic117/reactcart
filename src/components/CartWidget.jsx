@@ -1,9 +1,22 @@
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
 const CartWidget = () => {
+    const { totCartQty } = useContext(CartContext)
     return (
-        <div className="nav-cart">
-            <img src="/product_img/tuff.png" alt="cart-icon" className="icon" />
-            <span>0</span>
-        </div>
+        <>
+            {
+                totCartQty > 0 ? (
+                        <div className="nav-cart">
+                            <img src="/cart_icon.jpg" alt="cart-icon" className="icon" />
+                            <span>{totCartQty}</span>
+                        </div>
+                    ) : (
+                        null
+                    )
+            }
+        </>
     );
 }
+
 export default CartWidget
