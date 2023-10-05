@@ -12,7 +12,6 @@ export const CartContextProvider = ({children}) => {
         if(isInCart(item.id)) {
             console.error("Producto ya agregado al carro");
         } else {
-            /* agrega al carro */
             setCart(prev => [...prev, {...item, qty}]);
 
             setTotCartQty(totCartQty += qty);
@@ -20,7 +19,6 @@ export const CartContextProvider = ({children}) => {
         }
     }
     const clearCart = () => {
-        
         setCart([]);
         setTotCartQty(totCartQty = 0);
         setTotAmount(totAmount = 0);
