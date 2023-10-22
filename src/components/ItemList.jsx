@@ -1,15 +1,21 @@
 import { Item } from "./Item"
 import { Loader } from "./Loader"
 
-export const ItemList = ({data}) => {
+export const ItemList = ({data, loading}) => {
+
+    if (data.length == 0) {
+        if (loading == true) {
+            return <Loader loading={true}/>
+        } else {
+            return <p className="none">No hay productos</p>
+        }
+    }
 
     return (
         <div className="item-list">
-            {
-            data.length > 0 ? 
-            data.map(item => 
+            {data.map(item => 
                     <Item key={item.id} data={item} />
-            ) : <Loader loading={true}/>}
+            )}
         </div>
     )
 }

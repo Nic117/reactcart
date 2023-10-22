@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Montserrat&family=Poppins:ital,wght@0,100;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Montserrat&familyitem-deta=Poppins:ital,wght@0,100;1,200&display=swap');
 
 * {
     margin: 0;
@@ -20,7 +20,7 @@ h5 {
     font-size: 1.5rem;
 }
 p{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-size: sans-serif;
 }
 .icon {
@@ -37,16 +37,17 @@ p{
 .small-button {
     background-color: rgb(17, 153, 158);
     color: white;
-    font-size: 2rem;
-    width: 2rem;
-    height: 2rem; 
-    border-radius: 50%; 
-    display: flex;
+    font-size: 0.8rem;
+    width: 3rem; 
+    height:3rem; 
+    border-radius: 10px; 
     justify-content: center;
     align-items: center;
     text-align: center;
     cursor: pointer;
 }
+
+
 
 .medium-button {
     background-color: rgb(17, 153, 158);
@@ -57,10 +58,9 @@ p{
     background-color: rgb(17, 153, 158);
     color: white;
     font-size: 1rem;
-    padding: 1rem;
-    margin-top: 1rem;
-    border-radius: 0.5rem; 
-    transition: background-color 0.3s ease, transform 0.3s ease; 
+    padding: 1rem 0.8rem; 
+    border-radius: 50%; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
 }
 
@@ -164,27 +164,33 @@ p{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 7rem;
 }
 .detail {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    justify-items: center;
     align-items: center;
-    margin: 2rem;
+    text-align: left; /* Cambiar a izquierda para que coincida con Amazon */
     max-width: 800px;
 }
 .detail-card {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    text-decoration: none;
     text-align: center;
+    border: 1px solid #ddd; /* Agregar un borde para separar los detalles */
+    padding: 20px;
+    margin: 10px;
+    width: 300px; /* Ajusta el ancho según tus necesidades */
+}
+.detail-card-price{
+    font-size: 1.5rem; /* Reducir el tamaño de fuente del precio */
+    color: #B12704; /* Utilizar un color similar al de Amazon */
+
 }
 .detail-card p {
-    margin-top: 1.2rem;
+    margin-top: 10px;
+    font-size: 0.9rem; /* Ajustar el tamaño de fuente del texto */
 }
 .detail-card-img {
     width: 150px;
@@ -194,10 +200,11 @@ p{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 .detail-count h4 {
-    margin: 2rem;
+    margin: 1rem;
+    font-size: 1.2rem; /* Ajustar el tamaño de fuente */
 }
 
 .cart {
@@ -250,4 +257,29 @@ p{
 .checkout-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
+
+.finalizar-compra-link {
+    display: inline-block;
+    padding: 0.8rem 0.6rem; /* Ajusta el padding para hacerlo más pequeño */
+    background-color: #a28e1b; /* Color amarillo */
+    color: white;
+    font-size: 0.8rem; /* Ajusta el tamaño de fuente para hacerlo más pequeño */
+    border-radius: 50%; /* Hacerlo redondo */
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 7rem; /* Espacio desde arriba */
+    margin-left: 2rem;
+}
+
+.item-detail-container {
+    /* Agrega el siguiente código para alinear el botón al centro del contenedor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+
